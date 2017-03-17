@@ -1,11 +1,9 @@
 plugins {
 	id "com.google.osdetector" version "1.4.0"
+	id 'jacoco'
+	id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 apply plugin: 'java'
-plugins {
-    id 'jacoco'
-    id 'com.github.kt3k.coveralls' version '2.6.3'
-}
 
 version = '1.0'
 
