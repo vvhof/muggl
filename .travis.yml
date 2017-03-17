@@ -11,9 +11,6 @@ branches:
   - master
   - javaee
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/.
-  
-before_script:
-  - ./gradlew assemble
 
 script:
   - ./gradlew check jacocoTestReport
