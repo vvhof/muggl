@@ -2,7 +2,6 @@ plugins {
 	id "com.google.osdetector" version "1.4.0"
 }
 apply plugin: 'java'
-apply plugin: 'coveralls'
 
 version = '1.0'
 
