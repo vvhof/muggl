@@ -12,9 +12,6 @@ branches:
   - javaee
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/.
 
-script:
-  - ./gradlew check jacocoTestReport
-  
 after_success:
   - ./gradlew jacocoTestReport coveralls
   
