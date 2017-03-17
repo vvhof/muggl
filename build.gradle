@@ -2,6 +2,7 @@ plugins {
 	id "com.google.osdetector" version "1.4.0"
 }
 apply plugin: 'java'
+apply plugin: 'coveralls'
 
 version = '1.0'
 
@@ -20,6 +21,11 @@ allprojects {
 	    mavenCentral()
 	    maven { url 'http://maven-eclipse.github.io/maven' }
 		flatDir { dirs '../lib' }
+	}
+	
+	plugins {
+	    id 'jacoco'
+	    id 'com.github.kt3k.coveralls' version '2.6.3'
 	}
 
 	dependencies {
