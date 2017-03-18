@@ -35,7 +35,7 @@ allprojects {
 }
 
 // Gather all reports
-task jacocoCombinedReport(type: JacocoReport) {
+task jacocoCombinedTestReport(type: JacocoReport) {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
     subprojects.each {
         sourceSets it.sourceSets.main
@@ -48,7 +48,7 @@ task jacocoCombinedReport(type: JacocoReport) {
 }
 
 coveralls {
-    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoCombinedReport/jacocoCombinedReport.xml"
+    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoCombinedTestReport/jacocoCombinedTestReport.xml"
 }
 
 def static getSwtVersion(){
