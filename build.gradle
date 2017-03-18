@@ -26,11 +26,15 @@ allprojects {
 	}
 	
 	jacocoTestReport {
-    		reports {
-       			xml.enabled = true
-        		html.enabled = true
-                csv.enabled false
-    		}
+        additionalSourceDirs = project.files(sourceSets.main.allSource.srcDirs)
+        sourceDirectories = project.files(sourceSets.main.allSource.srcDirs)
+        classDirectories = project.files(sourceSets.main.output)
+
+        reports {
+            xml.enabled = true
+            html.enabled = true
+            csv.enabled false
+        }
 	}
 }
 
@@ -45,13 +49,21 @@ task jacocoCombinedTestReport(type: JacocoReport) {
     subprojects.each { subproject ->
         sourceSets subproject.sourceSets.main
     }
-    println sourceSets.main
+
+    additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+    classDirectories = files(subprojects.sourceSets.main.output)
+    executionData = files(subprojects.jacocoTestReport.executionData)
 
     reports {
         xml.enabled true
         html.enabled true
         html.destination "${buildDir}/reports/jacoco"
         csv.enabled false
+    }
+
+    doFirst {
+        executionData = files(executionData.findAll { it.exists() })
     }
 }
 
