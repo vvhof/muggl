@@ -44,11 +44,7 @@ tasks.withType(JavaCompile) {
 
 // Gather all reports
 task jacocoCombinedTestReport(type: JacocoReport) {
-    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
-    // Add all relevant sourcesets from the subprojects
-    subprojects.each { subproject ->
-        sourceSets subproject.sourceSets.main
-    }
+    dependsOn(subprojects.test)
 
     additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
     sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
