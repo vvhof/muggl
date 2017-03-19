@@ -16,4 +16,4 @@ script:
   - ./gradlew build
 
 after_success:
-  - ./gradlew jacocoTestReport jacocoCombinedTestReport coveralls
+  - ./gradlew coveralls

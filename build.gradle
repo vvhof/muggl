@@ -46,7 +46,7 @@ tasks.withType(JavaCompile) {
 
 // Gather all reports
 task jacocoCombinedTestReport(type: JacocoReport, group: 'Coverage') {
-    dependsOn(subprojects.test)
+    dependsOn(subprojects.jacocoTestReport)
 
     additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
     sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
