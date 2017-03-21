@@ -65,8 +65,8 @@ task jacocoCombinedTestReport(type: JacocoReport, group: 'Coverage') {
     }
 }
 
-codeCoverageReport.dependsOn {
-    jacocoCombinedTestReport
+task codeCoverageReport {
+    dependsOn(jacocoCombinedTestReport)
 }
 
 def static getSwtVersion(){
