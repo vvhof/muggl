@@ -17,3 +17,4 @@ In order to create a **deployable jar** file:
 
 ### Builds
 [![Build Status](https://travis-ci.org/vvhof/muggl.svg?branch=master)](https://travis-ci.org/vvhof/muggl)
+[![codecov](https://codecov.io/gh/vvhof/muggl/branch/master/graph/badge.svg)](https://codecov.io/gh/vvhof/muggl)
