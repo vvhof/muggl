@@ -65,14 +65,8 @@ task jacocoCombinedTestReport(type: JacocoReport, group: 'Coverage') {
     }
 }
 
-coveralls {
-    sourceDirs = subprojects.sourceSets.main.allSource.srcDirs.flatten()
-    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoCombinedTestReport/jacocoCombinedTestReport.xml"
-}
-
-tasks.coveralls {
-    group = 'Coverage'
-    dependsOn jacocoCombinedTestReport
+codeCoverageReport.dependsOn {
+    jacocoCombinedTestReport
 }
 
 def static getSwtVersion(){
