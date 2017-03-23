@@ -17,11 +17,11 @@ branches:
   
 script: 
   - ./gradlew check
+  - docker build -t vvhof/muggl .
 
 after_success:
   - ./gradlew codeCoverageReport 
   - bash <(curl -s https://codecov.io/bash)
-  - docker build -t vvhof/muggl .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   -  docker push vvhof/muggl;
   
