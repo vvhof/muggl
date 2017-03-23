@@ -2,6 +2,9 @@ language: java
 sudo: required
 jdk:
   - oraclejdk8
+  
+services:
+  - docker
 
 git:
   depth: 3
@@ -16,8 +19,11 @@ script:
   - ./gradlew check
 
 after_success:
-  - ./gradlew codeCoverageReport
+  - ./gradlew codeCoverageReport 
   - bash <(curl -s https://codecov.io/bash)
+  - docker build -t vvhof/muggl .
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  -  docker push vvhof/muggl;
   
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
